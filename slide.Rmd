@@ -174,7 +174,7 @@ dat <- readr::read_csv("hoge.csv")
 ## `read.csv()`
 - 多くの人が最初に習う関数
 ```{r eval=FALSE}
-dat <- read.csv("sample.csv", stringAsFactors = FALSE)
+dat <- read.csv("sample.csv", stringsAsFactors = FALSE)
 ```
 
 ## `readr::read_csv()`
@@ -214,9 +214,9 @@ dat <- fread("sample.csv", data.table = FALSE)
 
 ## 時間を計測
 ```{r eval=TRUE}
-system.time(dat <- read.csv("./data/Sales.csv"))
-system.time(dat2 <- readr::read_csv("./data/Sales.csv"))
-system.time(dat3 <- data.table::fread("./data/Sales.csv"))
+system.time(dat <- read.csv("data/Sales.csv"))
+system.time(dat2 <- readr::read_csv("data/Sales.csv"))
+system.time(dat3 <- data.table::fread("data/Sales.csv"))
 ```
 
 # tsv
@@ -224,7 +224,7 @@ system.time(dat3 <- data.table::fread("./data/Sales.csv"))
 - `read.delim()`は区切り値のファイルを読む標準関数
 - `read.csv()`は `sep = ","`をつけたもの
 ```{r eval=FALSE}
-dat <- read.delim("sample.tsv", stringAsFactors = FALSE)
+dat <- read.delim("sample.tsv", stringsAsFactors = FALSE)
 ```
 
 ## `readr::read_tsv()`
@@ -244,7 +244,7 @@ dat <- fread("sample.tsv", data.table = FALSE)
 
 ## `read.delim()`
 ```{r eval=FALSE}
-dat <- read.delim("sample.tsv", stringAsFactors = FALSE, sep = "|")
+dat <- read.delim("sample.tsv", stringsAsFactors = FALSE, sep = "|")
 ```
 
 ## `readr::read_delim()`
@@ -268,7 +268,7 @@ dat <- fread("sample.tsv", data.table = FALSE)
 |                        | read.\*\*\* | read_\*\*\* | fread |
 |------------------------|----------|----------|-------|
 | 速さ(500MB)            | 約 1 分    | 8 秒      | 3 秒   |
-| 区切り地値の判定ミス   | ×        | ×        | △     |
+| 区切り値の判定ミス   | ×        | ×        | △     |
 | エンコーディング | ○        | ○        | △     |
 
 # xlsx, xls

@@ -550,8 +550,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section><section id="r-" class="titleslide slide level1"><h1>さあ、R でデータ分析だ!</h1></section><section class="slide level2">
 <h2>データ分析の(おおまかな)流れ</h2>
 <div class="column1">
-<div id="htmlwidget-a5cd803e142576ed4a87" style="width:300px;height:300px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5cd803e142576ed4a87">{"x":{"diagram":"\ndigraph data_analytics {\n\n      # graph\n      graph [overlap = true, fontsize = 10]\n\n      # node\n      node [shape=box,\n      fontname = Helvetica,\n      style = filled,\n      fillcolor = SteelBlue,\n      fontcolor = white]\n      データ読み込み;\n\n      node [shape = box,\n      fontname = Helvetica,\n      fillcolor = Gray,\n      fontcolor = black]\n      可視化・モデリング; 前処理;\n\n      # edge\n      データ読み込み->前処理\n      前処理->可視化・モデリング\n      }\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c05c57117d5a606d2801" style="width:300px;height:300px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c05c57117d5a606d2801">{"x":{"diagram":"\ndigraph data_analytics {\n\n      # graph\n      graph [overlap = true, fontsize = 10]\n\n      # node\n      node [shape=box,\n      fontname = Helvetica,\n      style = filled,\n      fillcolor = SteelBlue,\n      fontcolor = white]\n      データ読み込み;\n\n      node [shape = box,\n      fontname = Helvetica,\n      fillcolor = Gray,\n      fontcolor = black]\n      可視化・モデリング; 前処理;\n\n      # edge\n      データ読み込み->前処理\n      前処理->可視化・モデリング\n      }\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="column2">
 <p>今日のお話はここ </br></p>
@@ -625,7 +625,7 @@ dat &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw
 <ul>
 <li>多くの人が最初に習う関数</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;sample.csv&quot;</span>, <span class="dt">stringAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;sample.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
 </section><section id="readrread_csv" class="slide level2">
 <h2><code>readr::read_csv()</code></h2>
 <ul>
@@ -664,15 +664,15 @@ dat &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st"
 </div>
 </section><section class="slide level2">
 <h2>時間を計測</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Sales.csv&quot;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Sales.csv&quot;</span>))</code></pre></div>
 <pre><code>   user  system elapsed 
-  3.752   0.084   3.856 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat2 &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;./data/Sales.csv&quot;</span>))</code></pre></div>
+  3.664   0.086   3.779 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat2 &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;data/Sales.csv&quot;</span>))</code></pre></div>
 <pre><code>   user  system elapsed 
-  0.864   0.030   0.902 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat3 &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/Sales.csv&quot;</span>))</code></pre></div>
+  0.858   0.035   0.951 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat3 &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;data/Sales.csv&quot;</span>))</code></pre></div>
 <pre><code>   user  system elapsed 
-  0.906   0.015   0.930 </code></pre>
+  0.910   0.019   0.943 </code></pre>
 </section></section>
 <section><section id="tsv" class="titleslide slide level1"><h1>tsv</h1></section><section id="read.delim" class="slide level2">
 <h2><code>read.delim()</code></h2>
@@ -680,7 +680,7 @@ dat &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st"
 <li><code>read.delim()</code>は区切り値のファイルを読む標準関数</li>
 <li><code>read.csv()</code>は <code>sep = &quot;,&quot;</code>をつけたもの</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;sample.tsv&quot;</span>, <span class="dt">stringAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;sample.tsv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
 </section><section id="readrread_tsv" class="slide level2">
 <h2><code>readr::read_tsv()</code></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readr)
@@ -695,7 +695,7 @@ dat &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st"
 </section></section>
 <section><section class="titleslide slide level1"><h1>その他の区切り値</h1></section><section id="read.delim-1" class="slide level2">
 <h2><code>read.delim()</code></h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;sample.tsv&quot;</span>, <span class="dt">stringAsFactors =</span> <span class="ot">FALSE</span>, <span class="dt">sep =</span> <span class="st">&quot;|&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;sample.tsv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>, <span class="dt">sep =</span> <span class="st">&quot;|&quot;</span>)</code></pre></div>
 </section><section id="readrread_delim" class="slide level2">
 <h2><code>readr::read_delim()</code></h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readr)
@@ -728,7 +728,7 @@ dat &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st"
 <td>3 秒</td>
 </tr>
 <tr class="even">
-<td>区切り地値の判定ミス</td>
+<td>区切り値の判定ミス</td>
 <td>×</td>
 <td>×</td>
 <td>△</td>
