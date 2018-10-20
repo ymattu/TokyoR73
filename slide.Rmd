@@ -43,7 +43,7 @@ options(dplyr.print_max = 1e9)
 - 松村優哉
 - <u>Twitter</u>: **y\_\_mattu**
 - <u>GitHub</u>: **ymattu**
-- M1
+- M2
 - 計量経済学、ベイズ統計、因果推論、マーケティング
 - 言語: R, Python, SAS
 - https://ymattu.github.io/
@@ -197,7 +197,7 @@ dat <- fread("sample.csv", data.table = FALSE)
 ## 高速ってどのくらい速いの？
 <div class="column1">
 ### 検証用データ
-- ECサイトのログデータ(を意識して作ったデータ)
+- ECサイトのログデータ <br> (を意識して作ったデータ)
 - csv
 - 100 万行× 3 列
 - 約 45MB

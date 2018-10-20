@@ -512,7 +512,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>松村優哉</li>
 <li><u>Twitter</u>: <strong>y__mattu</strong></li>
 <li><u>GitHub</u>: <strong>ymattu</strong></li>
-<li>M1</li>
+<li>M2</li>
 <li>計量経済学、ベイズ統計、因果推論、マーケティング</li>
 <li>言語: R, Python, SAS</li>
 <li><a href="https://ymattu.github.io/" class="uri">https://ymattu.github.io/</a></li>
@@ -550,8 +550,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section><section id="r-" class="titleslide slide level1"><h1>さあ、R でデータ分析だ!</h1></section><section class="slide level2">
 <h2>データ分析の(おおまかな)流れ</h2>
 <div class="column1">
-<div id="htmlwidget-4ac409c43f1720c39dfa" style="width:300px;height:300px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4ac409c43f1720c39dfa">{"x":{"diagram":"\ndigraph data_analytics {\n\n      # graph\n      graph [overlap = true, fontsize = 10]\n\n      # node\n      node [shape=box,\n      fontname = Helvetica,\n      style = filled,\n      fillcolor = SteelBlue,\n      fontcolor = white]\n      データ読み込み;\n\n      node [shape = box,\n      fontname = Helvetica,\n      fillcolor = Gray,\n      fontcolor = black]\n      可視化・モデリング; 前処理;\n\n      # edge\n      データ読み込み->前処理\n      前処理->可視化・モデリング\n      }\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a5cd803e142576ed4a87" style="width:300px;height:300px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a5cd803e142576ed4a87">{"x":{"diagram":"\ndigraph data_analytics {\n\n      # graph\n      graph [overlap = true, fontsize = 10]\n\n      # node\n      node [shape=box,\n      fontname = Helvetica,\n      style = filled,\n      fillcolor = SteelBlue,\n      fontcolor = white]\n      データ読み込み;\n\n      node [shape = box,\n      fontname = Helvetica,\n      fillcolor = Gray,\n      fontcolor = black]\n      可視化・モデリング; 前処理;\n\n      # edge\n      データ読み込み->前処理\n      前処理->可視化・モデリング\n      }\n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="column2">
 <p>今日のお話はここ </br></p>
@@ -646,7 +646,7 @@ dat &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st"
 <div class="column1">
 <h3>検証用データ</h3>
 <ul>
-<li>ECサイトのログデータ(を意識して作ったデータ)</li>
+<li>ECサイトのログデータ <br> (を意識して作ったデータ)</li>
 <li>csv</li>
 <li>100 万行× 3 列</li>
 <li>約 45MB</li>
@@ -666,13 +666,13 @@ dat &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st"
 <h2>時間を計測</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Sales.csv&quot;</span>))</code></pre></div>
 <pre><code>   user  system elapsed 
-  3.745   0.088   3.865 </code></pre>
+  3.752   0.084   3.856 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat2 &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;./data/Sales.csv&quot;</span>))</code></pre></div>
 <pre><code>   user  system elapsed 
-  0.864   0.031   0.901 </code></pre>
+  0.864   0.030   0.902 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(dat3 &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/Sales.csv&quot;</span>))</code></pre></div>
 <pre><code>   user  system elapsed 
-  0.904   0.016   0.929 </code></pre>
+  0.906   0.015   0.930 </code></pre>
 </section></section>
 <section><section id="tsv" class="titleslide slide level1"><h1>tsv</h1></section><section id="read.delim" class="slide level2">
 <h2><code>read.delim()</code></h2>
